@@ -1,4 +1,4 @@
-name: create aws infra
+name: create aws infra lab1
 on:
   workflow_dispatch:
   # push:

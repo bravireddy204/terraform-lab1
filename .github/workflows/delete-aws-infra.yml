@@ -1,4 +1,4 @@
-name: delete aws infra
+name: delete aws infra lab1
 on:
   workflow_dispatch:
 jobs:

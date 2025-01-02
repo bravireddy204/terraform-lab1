@@ -4,27 +4,24 @@ on:
   # push:
   #   branches:
   #     - master
-permissions:
-  id-token: write # This is required for requesting the JWT
-  contents: read  # This is required for actions/checkout
+
 
 jobs:
   create_plan:
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
     runs-on: ubuntu-latest
     steps:
       - name: get-code
         uses: actions/checkout@v4
       - name: set-up terraform
         uses: hashicorp/setup-terraform@v2.0.3
-      - name: setup aws-cli
-        uses: aws-actions/setup-sam@v2
-        with:
-          use-installer: true
-          token: ${{ secrets.GIT_TOKEN }}
+      
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::985539789378:role/terraform-1
+          role-to-assume: arn:aws:iam::985539789378:role/Oidc-admin
           aws-region: ap-south-1
       - name: test aws login
         run: | 

@@ -11,6 +11,7 @@ jobs:
       - name: get-code
         uses: actions/checkout@v4
       - name: set-up terraform
+        uses: hashicorp/setup-terraform@v2.0.3
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
